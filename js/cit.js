@@ -624,7 +624,7 @@ function add_response() {
         "\t" +
         condition +
         "\t" +
-        dstnc_state +
+        cat_order +
         "\t" +
         blocknum +
         "\t" +

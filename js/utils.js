@@ -73,17 +73,8 @@ var pre_cond;
 
 function starter() {
     pre_cond = $("#conditions_id").val();
-    if (pre_cond > 2) {
-        condition = 4;
-    } else {
-        condition = 1;
-    }
-    if (pre_cond == 1 || pre_cond == 3) {
-        distance_order = 'close1st';
-    } else {
-        distance_order = 'wide1st';
-    }
-    name_order = $("#name_order_id").val();
+    condition = 1; // always ECIT guilty
+    cat_order = $("#name_order_id").val();
     subj_id = $("#subj_num_id").val();
 }
 
@@ -202,18 +193,19 @@ function end_save() {
     var dcit = (mean(all_main_rts.probs) - mean(all_main_rts.irrs)) / sd(all_main_rts.irrs);
     var outcome;
     if (dcit > 0.1) {
-      outcome = " => found GUILTY (<i>d</i><sub>CIT</sub> > 0.1";
+      outcome = " => found GUILTY (dcit > 0.1";
     } else {
-      outcome = " => found INNOCENT (<i>d</i><sub>CIT</sub> <= 0.1";
+      outcome = " => found INNOCENT (dcit <= 0.1";
     }
     outcome += "; Pr-Irr diff ~" + Math.round(mean(all_main_rts.probs) - mean(all_main_rts.irrs)) + " ms)";
     f_name =
         experiment_title +
         "_" +
-        pre_cond +
-        name_order +
-        "_" +
         subj_id +
+        "_" +
+        cat_order +
+        "_" +
+        Date.now() +
         ".txt";
     to_display = "dcit = " + (Math.ceil(dcit * 1000) / 1000).toFixed(3) + outcome + "\n\nFile name: " + f_name + "\n\nFull data:\n";
         console.log(to_display);

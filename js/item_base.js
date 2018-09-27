@@ -215,7 +215,7 @@ function select_meaningful() {
     });
 }
 
-var stim_base_6, the_targets = [], the_probes = [];
+var stim_base_6, stim_base, the_targets = [], the_probes = [];
 
 function create_stim_base() {
     //creates all stimuli (a 6-item group - 1probe,1target,4irrelevants - for each of 4 different categories) from the given item and probe words
@@ -238,17 +238,27 @@ function create_stim_base() {
                 cat: categories[index]
             });
             if (0 === num) {
-                stim_base_temp[index][num]["type"] = "probe";
-                the_probes.push(stim_base_temp[index][num].word)
+                stim_base_temp[index][num].type = "probe";
+                the_probes.push(stim_base_temp[index][num].word);
             } else if (1 == num) {
-                stim_base_temp[index][num]["type"] = "target";
-                the_targets.push(stim_base_temp[index][num].word)
+                stim_base_temp[index][num].type = "target";
+                the_targets.push(stim_base_temp[index][num].word);
             } else {
-                stim_base_temp[index][num]["type"] = "irrelevant" + (num-1);
+                stim_base_temp[index][num].type = "irrelevant" + (num-1);
             }
         });
     });
-    window.stim_base = [stim_base_temp[0], stim_base_temp[1],stim_base_temp[0],stim_base_temp[1]];
+    if (cat_order == 1) {
+        stim_base = [
+            stim_base_temp[0],
+            stim_base_temp[1]
+        ];
+    } else {
+        stim_base = [
+            stim_base_temp[1],
+            stim_base_temp[0]
+        ];
+    }
     set_block_texts();
     set_cit_conditions();
 }
