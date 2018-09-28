@@ -89,7 +89,7 @@ function prune() {
                     return Math.abs(probe.length - n.length) <= maxdif;
                 });
                 if (temps.length > 0) {
-                    final8.push(rchoice(temps));
+                    final8.push(temps[0]); // nonrandom!
                     container = $.grep(container, function(n) {
                         return final8[final8.length - 1] !== n;
                     });
@@ -138,84 +138,10 @@ function prune() {
     items_base2_temp.splice(1, 1);
     items_base2_temp.splice(1, 1); // skip dates
     items_base2 = items_base2_temp;
+    create_stim_base();
 }
 
-function select_meaningful() {
-    set_guilty_vs_innocent(); // this sets instruction texts depending on guilt - unrelated to item selection
-    window.countC0 = 0;
-    window.countC1 = 0;
-    window.words_to_filter = [[], []];
-    items_base2.forEach(function(categ, index1) {
-        column = categ.slice(1, 9);
-        column.forEach(function(word, ind) {
-            column[ind] = word.toLowerCase();
-        });
-        column.sort();
-        column.splice(randomdigit(1, 6), 0, "None");
-        column.forEach(function(word, index2) {
-            var id_full = ["#wo", index1, index2].join("");
-            $(id_full).text(word);
-        });
-    });
-    $(".words0").click(function() {
-        var this_word = $(this).text();
-        if (this_word == "None") {
-            if ($(this).hasClass("turnedon")) {
-                $(this).removeClass("turnedon");
-                countC0 = 0;
-            } else {
-                if (countC0 === 0) {
-                    $(this).addClass("turnedon");
-                    countC0 = 9;
-                }
-            }
-        } else {
-            if ($(this).hasClass("turnedon")) {
-                $(this).removeClass("turnedon");
-                words_to_filter[0] = $.grep(words_to_filter[0], function(a) {
-                    return a != this_word;
-                });
-                countC0--;
-            } else {
-                if (countC0 < 2) {
-                    $(this).addClass("turnedon");
-                    words_to_filter[0].push(this_word);
-                    countC0++;
-                }
-            }
-        }
-    });
-    $(".words1").click(function() {
-        var this_word = $(this).text();
-        if (this_word == "None") {
-            if ($(this).hasClass("turnedon")) {
-                $(this).removeClass("turnedon");
-                countC1 = 0;
-            } else {
-                if (countC1 === 0) {
-                    $(this).addClass("turnedon");
-                    countC1 = 9;
-                }
-            }
-        } else {
-            if ($(this).hasClass("turnedon")) {
-                $(this).removeClass("turnedon");
-                words_to_filter[1] = $.grep(words_to_filter[1], function(a) {
-                    return a != this_word;
-                });
-                countC1--;
-            } else {
-                if (countC1 < 2) {
-                    $(this).addClass("turnedon");
-                    words_to_filter[1].push(this_word);
-                    countC1++;
-                }
-            }
-        }
-    });
-}
-
-var stim_base_6, stim_base, the_targets = [], the_probes = [];
+var stim_base_6, stim_base, the_targets = [], the_probes = [], words_to_filter = [[], []];
 
 function create_stim_base() {
     //creates all stimuli (a 6-item group - 1probe,1target,4irrelevants - for each of 4 different categories) from the given item and probe words
@@ -227,10 +153,10 @@ function create_stim_base() {
         var words_array = [];
         if (condition < 3) {
             words_array = [filtered_words[0]].concat(
-                shuffle(filtered_words.slice(1, 6))
+                filtered_words.slice(1, 6)
             ); // for GUILTY
         } else {
-            words_array = shuffle(filtered_words.slice(1, 7)); // for INNOCENT
+            words_array = filtered_words.slice(1, 7); // for INNOCENT
         }
         words_array.forEach(function(word, num) {
             stim_base_temp[index].push({

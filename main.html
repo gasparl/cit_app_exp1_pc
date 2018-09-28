@@ -89,51 +89,10 @@
         <br>
         <br>
         <br>
-        <button class="intro_button" onclick="change_div( this, '#div_items_select', true, darken_bg, select_meaningful )">Start</button>
+        <button class="intro_button" onclick="change_div( this, '#instructions', true, darken_bg )">Start</button>
     </div>
 
 
-    <div id="div_items_select" style="width: 70%; height: 40%;" class="maintext">
-        Please look through the list below, and select, in each category (forenames and surnames), maximum two items that seem personally important or meaningful for you, or that seem in any way different from the rest of the items: for example, a forename that
-        you have often visited, or an surname that you especially admire, etc. (These items will then not be used in the test.) If there are no such items in a given category, just select "None". You can select (or deselect) by clicking on the items.
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <div id="wo00" style="top: 35%" class="words0"></div>
-        <div id="wo01" style="top: 40%" class="words0"></div>
-        <div id="wo02" style="top: 45%" class="words0"></div>
-        <div id="wo03" style="top: 50%" class="words0"></div>
-        <div id="wo04" style="top: 55%" class="words0"></div>
-        <div id="wo05" style="top: 60%" class="words0"></div>
-        <div id="wo06" style="top: 65%" class="words0"></div>
-        <div id="wo07" style="top: 70%" class="words0"></div>
-        <div id="wo08" style="top: 75%" class="words0"></div>
-        <div id="wo10" style="top: 35%" class="words1"></div>
-        <div id="wo11" style="top: 40%" class="words1"></div>
-        <div id="wo12" style="top: 45%" class="words1"></div>
-        <div id="wo13" style="top: 50%" class="words1"></div>
-        <div id="wo14" style="top: 55%" class="words1"></div>
-        <div id="wo15" style="top: 60%" class="words1"></div>
-        <div id="wo16" style="top: 65%" class="words1"></div>
-        <div id="wo17" style="top: 70%" class="words1"></div>
-        <div id="wo18" style="top: 75%" class="words1"></div>
-        <div id="wo20" style="top: 35%" class="words2"></div>
-        <div id="wo21" style="top: 40%" class="words2"></div>
-        <div id="wo22" style="top: 45%" class="words2"></div>
-        <div id="wo23" style="top: 50%" class="words2"></div>
-        <div id="wo24" style="top: 55%" class="words2"></div>
-        <div id="wo25" style="top: 60%" class="words2"></div>
-        <div id="wo26" style="top: 65%" class="words2"></div>
-        <div id="wo27" style="top: 70%" class="words2"></div>
-        <div id="wo28" style="top: 75%" class="words2"></div>
-        <br>
-        <button style="top:55%;left:80%;" class="main_button" onclick="change_div(this, div_after_item_selection, check_selected(), create_stim_base, nextblock );">Next</button>
-    </div>
 
     <div id="instructions" class="main_instr">
         <span style="position: relative;left: 42%;transform: translateX(-50%)"><b>Task instructions</b></span>
@@ -164,7 +123,7 @@
         <br>
         <br>
         <br>
-        <button class="main_button" onclick="change_div(this, '#div_cit_blockstart', target_check())">Next</button>
+        <button class="main_button" onclick="change_div(this, '#div_cit_blockstart', target_check(), nextblock);">Next</button>
     </div>
 
     <div id="div_cit_blockstart" style="padding:2%; padding-bottom: 40%; width: 85%; height: 0;" class="maintext">
@@ -190,19 +149,13 @@
 
 
     <div id="div_outro_end" style="width: 85%;font-size:2.0vw;" class="intro">
-        <b>End of the experiment</b>
         <br>
-        <br>Thank you for your participation! You can let the experiment leader know that you finished. Do not close anything!
-        <br><br>
-        <hr>
-        Short info about this test:
-        <br> In this study, we try to distinguish participants' true self-related details (e.g. true forename) based on slower response times to such items compared to other details (e.g. other, random forenames). Here we also want to test, as you have seen, whether or not the distance of response keys makes a difference.
-        <br><br>
-        If you want to know the final results of the entire study, write here your email address to get a copy of the resulting manuscript (probably within half a year):
+        <b>The End</b>
         <br>
-        <input type="text" id="eemail_id" maxlength="40" size="30">
         <br>
-        <br>For more immediate information, ask the experiment leader (or email Gaspar Lukacs).
+        You can let the experiment leader know that you finished. Please do not close anything!
+        <br>
+        <br>
         <br>
         <button style="background-color:red;position:absolute;left:100%;right:100%;" onclick="end_save();"> X </button>
     </div>

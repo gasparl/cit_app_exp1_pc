@@ -69,11 +69,8 @@ function check_selected() {
     return is_valid;
 }
 
-var pre_cond;
-
 function starter() {
-    pre_cond = $("#conditions_id").val();
-    condition = 1; // always ECIT guilty
+    condition = 0; // always standard CIT guilty
     cat_order = $("#name_order_id").val();
     subj_id = $("#subj_num_id").val();
 }

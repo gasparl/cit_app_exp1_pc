@@ -21,12 +21,6 @@ function set_block_texts() {
                 "</b>. ",
             "Remember: in this category, your target that requires a different response is <b>" +
                 stim_base[1][1].word.toUpperCase() +
-                "</b>. ",
-            "Again, your target that requires a different response is <b>" +
-                stim_base[2][1].word.toUpperCase() +
-                "</b>. ",
-            "Again, your target that requires a different response is <b>" +
-                stim_base[3][1].word.toUpperCase() +
                 "</b>. "
         ];
     }
@@ -38,29 +32,17 @@ function set_block_texts() {
     block_texts[3] =
         "<span id='feedback_id3'>You passed the second practice round. This will be the third and last practice round. The response deadline is again shorter.<br><br>The task is designed to be difficult, so don't be surprised if you make mistakes, but do your best: <b>try to be as accurate and as fast as possible</b>.<br></span><p id='chances_id'></p>";
     block_texts[4] =
-        "Good job. Now begins the actual test. The task is the same. There will be four blocks, with pauses between them. This first block tests the category of " +
+        "Good job. Now begins the actual test. The task is the same. There will be two blocks, with a pause in-between. This first block tests the category of " +
         stim_base[0][0].cat +
         ", so you will be shown only the related items. " +
         target_reminder[0] +
-        '<br><br>The minimum accuracy will now be much less strict than in the practice phase, but these blocks cannot be repeated, so you must keep paying attention in order to perform the test validly. <b>Again: try to be as accurate and as fast as possible.</b><br><br>When you are ready, click on <b>Start</b> to start the first block of the main test.';
+        '<br><br><b>Again: try to be as accurate and as fast as possible.</b>';
     block_texts[5] =
         "The first block is now done. The second block will test the category of " +
         stim_base[1][0].cat +
         ". " +
         target_reminder[1] +
         "The task is otherwise the same. <b>Again: try to be as accurate and as fast as possible.</b>";
-    block_texts[6] =
-        "The second block is now done. This third block will again test the category of " +
-        stim_base[2][0].cat +
-        ". " +
-        target_reminder[2] + ' ' + change_hint +
-        " You should have no concern about this: it makes no difference in the task requirements. <b>Again: try to be as accurate and as fast as possible.</b>";
-    block_texts[7] =
-        "The third block is now done. This fourth and final block will again test the category of " +
-        stim_base[3][0].cat +
-        ". " +
-        target_reminder[3] +
-        " The task is otherwise still the same. <b>Again: try to be as accurate and as fast as possible.</b>";
 }
 
 function first_practice_stim() {
@@ -378,22 +360,8 @@ function first_prac_wrong() {
     }
 }
 
-var practice_stim, main_stim, div_after_instr, div_after_item_selection;
-function set_guilty_vs_innocent() {
-    if (condition > 2) {
-        div_after_item_selection = "#div_story_disp";
-        $(".pre_detail").text("The criminal's ");
-        $("#final_check_id").html(
-            "This was the end of the lie detection test.<br><br>As a very important final check, please select below the details of the criminal as it was described in the beginning. This will confirm that you understood the instructions and remembered the crucial details."
-        );
-    } else {
-        div_after_item_selection = "#instructions";
-        $(".pre_detail").text("Your ");
-        $("#final_check_id").html(
-            "This is the end of the lie detection test.<br><br>As a very important final check, please select again the truly self-related details that you yourself gave in the very beginning. This will confirm that you understood the instructions and knew the crucial details."
-        );
-    }
-}
+var practice_stim, main_stim, div_after_instr;
+
 function set_cit_conditions() {
     var inducers_instructions =
         '<br><br>As continual reminders, there will also appear words that belong to one of the two categories (FAMILIAR or UNFAMILIAR). <br>Words belonging to the FAMILIAR category need the answer FAMILIAR ("I" key). These words are: <b>FAMILIAR</b>, <b>RECOGNIZED</b>, <b>MINE</b><br>Words belonging to the UNFAMILIAR category need the answer UNFAMILIAR ("E" key). These words are: <b>UNFAMILIAR</b>, <b>UNKNOWN</b>, <b>OTHER</b>, <b>THEIRS</b>, <b>THEM</b>, <b>FOREIGN</b></br></br>';
@@ -436,14 +404,6 @@ function set_cit_conditions() {
         $("#label_left").html('unfamiliar = "E"');
         practice_stim = getPracticeTestStimuli_induced;
         main_stim = getAllTestStimuli_induced;
-    }
-    if (distance_order == 'wide1st') {
-        dstnc_state = 0;
-        $("#label_top").html("");
-        $("#label_right").html("");
-        $("#label_left").html("");
-    } else {
-        dstnc_state = 1;
     }
 }
 
@@ -570,6 +530,11 @@ function next_trial() {
                 main_eval();
             }
             blocknum++;
+            if (blocknum == 3) {                
+                $("#label_top").html("");
+                $("#label_right").html("");
+                $("#label_left").html("");
+            }
             nextblock();
         } else {
             if (blocknum == 1) {
@@ -586,10 +551,11 @@ function next_trial() {
 
 function add_response() {
     var curr_type;
+    var act_type = trial_stim.type;
     if (
-        ["selfrefitem", "otherrefitem", "target"].indexOf(trial_stim.type) >= 0
+        ["selfrefitem", "otherrefitem", "target"].indexOf(act_type) >= 0
     ) {
-        curr_type = trial_stim.type;
+        curr_type = act_type;
     } else {
         curr_type = "main_item";
         if (blocknum > 3 && incorrect != 1 && tooslow != 1 && rt_start > 150 && rt_start < 800) {
@@ -616,9 +582,6 @@ function add_response() {
     } else {
         key_letter = keys_code;
     }
-    console.log("rt start:", rt_start);
-    console.log("rt end:", rt_end);
-    console.log("----duration:", rt_end-rt_start);
     cit_data +=
         subj_id +
         "\t" +
