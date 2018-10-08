@@ -229,35 +229,7 @@ function end_save() {
         "\t" +
         dcit +
         "\n";
-    practice_all_reps =
-        practice_repeated.block1 +
-        practice_repeated.block2 +
-        practice_repeated.block3;
-    dems =
-        subj_id +
-        "\t" +
-        condition +
-        "\t" +
-        $("#gender").val() +
-        "\t" +
-        $("#age").val() +
-        "\t" +
-        $("#handedness").val() +
-        "\t" +
-        $("#countries").val() +
-        "\t" +
-        $.browser.name +
-        "\t" +
-        $.browser.version +
-        "\t" +
-        practice_all_reps +
-        "\t" +
-        duration_full +
-        "\t" +
-        $("#eemail_id").val() +
-        "\n";
-
-    // TODO cit_data together with dems
+    
     console.log(cit_data);
     $("#data_display").text(cit_data);
     $("#div_outro_end").hide();

@@ -1,4 +1,4 @@
-var experiment_title = "ECIT_Keydistance";
+var experiment_title = "CIT_Mobile_pc";
 // set global cit vars
 var tooslow_delay = 400;
 var false_delay = 400;

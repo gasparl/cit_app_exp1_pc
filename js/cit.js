@@ -502,7 +502,7 @@ function main_eval() {
             );
         }
     }
-    if (verylow == true && blocknum > 3) {
+    if (verylow == true && blocknum > 3 && blocknum < num_of_blocks) {
         var feedback_text =
             "Warning: you had very low accuracy in this last block to the following item type(s):" +
             types_failed.join(",") +
@@ -530,7 +530,7 @@ function next_trial() {
                 main_eval();
             }
             blocknum++;
-            if (blocknum == 3) {                
+            if (blocknum == 3) {
                 $("#label_top").html("");
                 $("#label_right").html("");
                 $("#label_left").html("");
