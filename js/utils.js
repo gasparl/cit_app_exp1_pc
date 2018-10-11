@@ -39,6 +39,8 @@ function change_div(
     if (good_to_go === true) {
         onchange_function1();
         onchange_function2();
+        console.log(current);
+        console.log(current.parentNode);
         var toHide = "#" + current.parentNode.id;
         $(toHide).hide();
         $(next).show();
@@ -52,7 +54,7 @@ function validate_form(form_class) {
         if ($(this).val() === "") is_valid = false;
     });
     if (is_valid === false) {
-        alert("Please fill in all fields.");
+        alert("Bitte füllen Sie alle Details aus.");
     }
     return is_valid;
 }
@@ -229,7 +231,7 @@ function end_save() {
         "\t" +
         dcit +
         "\n";
-    
+
     console.log(cit_data);
     $("#data_display").text(cit_data);
     $("#div_outro_end").hide();

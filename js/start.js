@@ -10,7 +10,7 @@ var response_deadline, teststim, prac_teststim;
 var response_deadline_main = 800;
 var basic_times = {};
 var num_of_blocks = 5; // including practice, starting at 1
-var bg_color = "#031116";
+var bg_color = "#000"; // older: #031116
 var distance_order, dstnc_state, name_order;
 
 $(document).ready(function() {

@@ -22,7 +22,7 @@ function fill_options() {
     allforenams = allforenams.map(function(itemee){ return itemee.toLowerCase(); });
     surnms = surnms.map(function(itemee){ return itemee.toLowerCase(); });
     items_base1 = [
-        allforenams.sort(), [ "january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december" ], nums, surnms.sort()
+        allforenams, [ "january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december" ], nums, surnms
     ];
     categories_base.forEach( function( categ, index ) { //fills up the selection options for the categories
         var dropChoices = '';
@@ -198,7 +198,7 @@ function target_check() {
             .val()
             .toUpperCase() != the_targets[1].toUpperCase()
     ) {
-        alert("Wrong! Please check the details more carefully!");
+        alert("Falsch! Bitte sehen Sie sich die Details genauer an!");
         $("#div_target_check").hide();
         $("#instructions").show();
         $("#tcheck_forenames").val('');

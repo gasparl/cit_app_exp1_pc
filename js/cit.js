@@ -16,33 +16,33 @@ function set_block_texts() {
         target_reminder = ["", "", "", ""];
     } else {
         target_reminder = [
-            "Remember: in this category, your target that requires a different response is <b>" +
+            "Zur Erinnerung: das mit JA zu beantwortende Detail ist <b>" +
                 stim_base[0][1].word.toUpperCase() +
                 "</b>. ",
-            "Remember: in this category, your target that requires a different response is <b>" +
+            "Zur Erinnerung: das mit JA zu beantwortende Detail ist <b>" +
                 stim_base[1][1].word.toUpperCase() +
                 "</b>. "
         ];
     }
     block_texts[0] = "";
     block_texts[1] =
-        'There will be three short practice rounds. In this first practice round, we just want to see that you clearly understand the task. Therefore, you will have a lot of time to choose each of your responses, just make sure you choose accurately. Here, all items from the two categories (forenames, surnames) will be mixed together randomly. <b>You must respond to each item correctly.</b> If you choose an incorrect response (or not give response for over 10 seconds), you will have to repeat this practice round.<br><br>Remember: press "<b>E</b>" or "<b>I</b>" keys depending on the category to which the given item belongs. If needed, click <b>show full instructions again</b> to reread the details.<br><br><p id="chances_id"></p><b>Please make sure you clearly understand the instructions before continuing with the task!</b>';
+        'Es werden drei kurze Übungsrunden stattfinden. In der ersten Übungsrunde wollen wir nur herausfinden, ob Sie die Aufgabe genau verstanden haben. Um sicherzustellen, dass sie Ihre jeweiligen Antworten genau auswählen, werden Sie für diese Aufgabe genügend Zeit haben. An dieser Stelle werden alle Items der zwei Kategorien (Vornamen, Nachnamen) zufällig durchmischt. <b>Sie müssen auf jedes Item korrekt antworten.</b> Wählen Sie eine nicht korrekte Antwort (oder geben keine Antwort für mehr als 10 Sekunden), müssen Sie diese Übungsrunde wiederholen.<br><br>Falls nötig, tippen Sie <b>Anweisungen anzeigen</b> um die Details erneut zu lesen.<br><br>';
     block_texts[2] =
-        '<span id="feedback_id2">Great, you passed the first practice round. In this second practice round, there will be a shorter deadline for the responses, but a certain rate of errors is allowed. (Items will be first forename names, then surname names, then again forenames, etc.) Try to be as accurate and as fast as possible.<br><br></span><p id="chances_id"></p>';
+        '<span id="feedback_id2">Super, Sie haben die erste Übungsrunde geschafft. In dieser zweiten Übungsrunde wird die Antwortzeit verkürzt sein, wobei aber eine bestimmte Anzahl an falschen Antworten erlaubt ist. (Vornamen und Nachnamen werden in Gruppen präsentiert.) Versuchen Sie, so genau und schnell wie möglich zu antworten. <br></span>';
     block_texts[3] =
-        "<span id='feedback_id3'>You passed the second practice round. This will be the third and last practice round. The response deadline is again shorter.<br><br>The task is designed to be difficult, so don't be surprised if you make mistakes, but do your best: <b>try to be as accurate and as fast as possible</b>.<br></span><p id='chances_id'></p>";
+        '<span id="feedback_id3">Sie haben die zweite Übungsrunde geschafft. Nun folgt die dritte und letzte Übungsrunde. Die Antwortzeit wird erneut verkürzt. Die Wörter "Erkannt?", "Ja", "Nein" werden nicht mehr angezeigt, die Aufgabe bleibt jedoch dieselbe. <br><br> <b>Versuchen Sie, so genau und schnell wie möglich zu antworten.</b>.<br></span>';
     block_texts[4] =
-        "Good job. Now begins the actual test. The task is the same. There will be two blocks, with a pause in-between. This first block tests the category of " +
+        "Gut gemacht. Nun beginnt der eigentliche Test. Die Aufgabe bleibt dieselbe. Es wird zwei Blöcke, getrennt durch eine Pause, geben. Im ersten Block wird die Kategorie " +
         stim_base[0][0].cat +
-        ", so you will be shown only the related items. " +
+        " getestet, also werden Ihnen nur die damit verbundenen Items präsentiert. " +
         target_reminder[0] +
-        '<br><br><b>Again: try to be as accurate and as fast as possible.</b>';
+        '<br><br><b>Versuchen Sie, so genau und schnell wie möglich zu antworten.</b>';
     block_texts[5] =
-        "The first block is now done. The second block will test the category of " +
+        "Der erste Block ist nun beendet. Im zweiten Block wird die Kategorie " +
         stim_base[1][0].cat +
-        ". " +
+        " getestet. " +
         target_reminder[1] +
-        "The task is otherwise the same. <b>Again: try to be as accurate and as fast as possible.</b>";
+        " Abgesehen davon bleibt die Aufgabe dieselbe. <b>Versuchen Sie, so genau und schnell wie möglich zu antworten.</b>";
 }
 
 function first_practice_stim() {
@@ -354,7 +354,7 @@ function first_prac_wrong() {
     if (blocknum == 1) {
         teststim = [];
         alert(
-            "You did not respond correctly. You will start this practice once again. Please read the instructions carefully."
+            "Sie haben nicht richtig geantwortet. Die Übung wird nun von Neuem beginnen. Bitte lesen Sie die Anweisungen genau."
         );
         first_correct = false;
     }
@@ -369,13 +369,13 @@ function set_cit_conditions() {
         // standard CIT
         div_after_instr = "#div_target_check";
         $("#task_instruction").html(
-            'Pressing the "I" key means "YES, I recognize this item as a relevant". Pressing the "E" key means "NO, I do not recognize this item as relevant". <br> You will see words (forenames, surnames) appearing in the middle of the screen. You have to recognize and say YES to the following target details: <b>' +
+            'Drücken der <i>rechten</i> Taste bedeutet "JA, ich nehme dieses Item als relevant wahr.". Drücken der <i>linken</i> Taste bedeutet "Nein, ich nehme dieses Item nicht als relevant wahr." <br> Sie werden Wörter (Vornamen, Nachnamen) sehen, die in der Mitte des Bildschirms auftauchen. Sie sollten diese wahrnehmen und mit JA auf die folgenden Details antworten: <b>' +
                 the_targets.join("</b>, <b>").toUpperCase() +
-                "</b><br>You have to say NO to all other details. Remember: you are denying that you recognize any of the other details as relevant to you, so you have to say NO to all of them.<br><br>"
+                "</b><br/><br/>Auf alle anderen Details sollten Sie mit NEIN antworten. Zur Erinnerung: Sie leugnen, irgendwelche der anderen Details als relevant für Sie wahrzunehmen, also sollten Sie auf alle mit NEIN antworten.<br/><br/>"
         );
-        $("#label_top").html("recognize?");
-        $("#label_right").html('yes = "I"');
-        $("#label_left").html('no = "E"');
+        $("#label_top").html("Erkannt?");
+        $("#label_right").html('Ja');
+        $("#label_left").html('Nein');
         practice_stim = getPracticeTestStimuli_simple;
         main_stim = getAllTestStimuli_simple;
     } else if (condition == 1 || condition == 4) {
@@ -526,9 +526,6 @@ function next_trial() {
     } else {
         basic_times.blocks += "\nBlock " + blocknum + " end " + Date();
         if (blocknum > 3 || practice_eval()) {
-            if (blocknum == 4 || blocknum == 5) {
-                main_eval();
-            }
             blocknum++;
             if (blocknum == 3) {
                 $("#label_top").html("");
@@ -646,19 +643,6 @@ function nextblock() {
             response_deadline = response_deadline_main;
             call_practice_stim();
         } else {
-            if (blocknum == 6 ) {
-                if (distance_order == 'wide1st') {
-                    dstnc_state = 1;
-                    $("#label_top").html("familiar to you?");
-                    $("#label_right").html('familiar = "I"');
-                    $("#label_left").html('unfamiliar = "E"');
-                } else {
-                    dstnc_state = 0;
-                    $("#label_top").html("");
-                    $("#label_right").html("");
-                    $("#label_left").html("");
-                }
-            }
             response_deadline = response_deadline_main;
             main_stim();
         }

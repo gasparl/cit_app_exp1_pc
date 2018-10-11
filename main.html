@@ -38,37 +38,23 @@
 
     <div id="div_intro_dems" style="text-align:left;width: 80%;padding-top: 0%;" class="intro">
         <br>
-        <b>
         <br>
-        Make sure to enter the <b>exact</b> same names (with the same characters) both on the PC and on the phone.
+         Stellen Sie sicher, dass sie die <b>exakt</b> gleichen Namen (mit den gleichen Buchstaben) sowohl am PC, als auch auf dem Handy, eingeben.
         <br>
-        <br>Your forename:
+        <br>Ihr Vorname:
         <input type="text" id="forenames" class="form_dems" maxlength="14" size="20">
-        <br>Gender:
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ihr Geschlecht:
         <select id="gender" class="form_dems">
             <option value="">- choose one -</option>
-            <option value="1">Male</option>
-            <option value="2">Female</option>
-        </select><br>
-        <br>Your surname:
+            <option value="1">männlich</option>
+            <option value="2">weiblich</option>
+        </select><br><br>
+        <br>Your Nachname:
         <input type="text" id="surnames" class="form_dems" maxlength="14" size="20">
         <br>
         <br>
         <br>
-        <button class="main_button" onclick="change_div( this, '#div_intro_ready', validate_form('.form_dems'), prune );">Next</button>
-    </div>
-
-    <div id="div_intro_ready" style="width: 70%;" class="intro">
-        <br>Now comes the lie detection simulation task. You will have to pretend to be somebody else, while we will try to identify you based on the details (forename, surname) that you gave in the beginning. For the sake of this experiment, imagine
-        yourself in a situation where you would really want to hide your true identity (e.g. from the authorities, after having commited a crime), and please perform the following task accordingly.
-        <br>
-        <br> It may happen that your true details that you gave will not appear in the task. That will simply mean that you are in the "innocent" condition, simulating an innocent suspect. The task will be just the same anyway.
-        <br>
-        <br> Click on <b>Start</b> to begin the lie test simulation.
-        <br>
-        <br>
-        <br>
-        <button class="intro_button" onclick="change_div( this, '#instructions', true, darken_bg )">Start</button>
+        <button class="main_button" onclick="change_div( this, '#instructions', validate_form('.form_dems'), prune );">OK</button>
     </div>
 
 
@@ -77,32 +63,28 @@
         <span style="position: relative;left: 42%;transform: translateX(-50%)"><b>Task instructions</b></span>
         <br>
         <br>
-        <p id="task_instruction"></p>
-        If you make a wrong response or you are too slow to respond, a red "WRONG" or "TOO SLOW" appears below the word. You cannot correct this: the next item appears automatically.
-        <br>
-        <br> Click on <b>OK</b> if you understood. You can always check these instructions again during the pauses in the task.
-        <br>
+
+        <p>
+            Während der Aufgabe, die Antworttasten auf der Tastatur werden die Tasten "e" (links) und "i" (rechts) sein. Bitte benutzen Sie nur Ihre linken und rechten <b>Zeigefinger</b> zum Drücken.
+
+        <span id="task_instruction"></span></p>
         <br>
         <br>
         <button class="main_button" style="position: relative;left: 50%;transform: translateX(-50%)" onclick="change_div(this, div_after_instr);">OK</button>
     </div>
 
     <div id="div_target_check" style="padding-bottom: 30%; width: 80%; height: 15%;" class="maintext">
-        <b>To make sure you correctly memorized the target details, please fill them in.</b>
+        <b>Um sicherzustellen, dass Sie sich die Details, auf die Sie mit JA antworten sollen, genau einprägen, geben Sie diese bitte hier ein.</b>
         <br>
-        <br>Target forename:
-        <select id="tcheck_forenames" style="text-transform: capitalize;">
-            <option value="">-</option>
-        </select>
+        <br>Vorname:
+        <input type="text" id="tcheck_forenames" maxlength="14" size="20">
         <br>
-        <br>Target surname:
-        <select id="tcheck_surnames" style="text-transform: capitalize;">
-            <option value="">-</option>
-        </select>
+        <br>Nachname:
+        <input type="text" id="tcheck_surnames" maxlength="14" size="20">
         <br>
         <br>
         <br>
-        <button class="main_button" onclick="change_div(this, '#div_cit_blockstart', target_check(), nextblock);">Next</button>
+        <button class="main_button" onclick="change_div(this, '#div_cit_blockstart', target_check(), nextblock);">OK</button>
     </div>
 
     <div id="div_cit_blockstart" style="padding:2%; padding-bottom: 40%; width: 85%; height: 0;" class="maintext">
@@ -111,28 +93,30 @@
         <button class="main_button" onclick="runblock()">Start</button>
         <br>
         <br>
-        <button class="main_button_instr" onclick="change_div(this, '#instructions');">show full instructions again</button>
+        <button class="main_button_instr" onclick="change_div(this, '#instructions');">Anweisungen erneut anzeigen</button>
     </div>
 
 
     <div id="div_cit_main">
-        <p id="tooslow"><b>TOO SLOW</b></p>
-        <p id="false"><b>WRONG</b></p>
+        <p id="tooslow"><b>Zu langsam!</b></p>
+        <p id="false"><b>Falsch!</b></p>
         <p id="label_top"></p>
         <p id="label_left"></p>
         <p id="label_right"></p>
         <p id="stimulus"></p>
-        <p id="start_text">Press the space bar to begin.</p>
+        <p id="start_text">Drücken Sie die Leertaste, um zu beginnen.</p>
     </div>
 
 
 
     <div id="div_outro_end" style="width: 85%;font-size:2.0vw;" class="intro">
         <br>
-        <b>The End</b>
+        <b>Ende</b>
         <br>
         <br>
-        You can let the experiment leader know that you finished. Please do not close anything!
+        <b>
+        <br/>Sie können dem Versuchsleiter mitteilen, dass Sie fertig sind. Bitte drücken Sie nun kein Taste mehr!
+        </b>
         <br>
         <br>
         <br>
