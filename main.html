@@ -24,14 +24,14 @@
         <br>Order of name categories:
         <select id="name_order_id" class="form_start">
             <option value="">- choose one -</option>
-            <option value="1">forenames first</option>
-            <option value="2">surnames first</option>
+            <option value="1">Vorname first</option>
+            <option value="2">Nachname first</option>
         </select>
         <br><br>
         <b><br>...close running programs & disconnect internet & set fullscreen (F11)!</b>
         <br><br>
         <br>
-            <button class="intro_button" style="position: absolute;left: 50%;transform: translateX(-50%)" onclick="change_div(this, '#div_intro_dems', validate_form('.form_start'), no_select_bg, starter)">START EXPERIMENT</button>
+            <button class="intro_button" style="position: absolute;left: 50%;transform: translateX(-50%)" onclick="change_div(this, '#div_intro_dems', validate_form('.form_start'), starter)">START EXPERIMENT</button>
         <br><br>
     </div>
 
@@ -54,7 +54,7 @@
         <br>
         <br>
         <br>
-        <button class="main_button" onclick="change_div( this, '#instructions', validate_form('.form_dems'), prune );">OK</button>
+        <button class="main_button" onclick="change_div( this, '#instructions', validate_form('.form_dems'), no_select_bg, prune );">OK</button>
     </div>
 
 

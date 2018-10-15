@@ -9,9 +9,9 @@ var nums = range(1, 32);
 
 var items_base1;
 
-var categories_base = [ "forenames", "months", "days", "surnames" ];
+var categories_base = [ "Vornamen", "months", "days", "Nachnamen" ];
 //var categories = [ "forenames", "dates", "surnames" ];
-var categories = [ "forenames", "surnames" ]; //
+var categories = [ "Vorname", "Nachname" ]; //
 
 function fill_options() {
     if ($("#gender").val() == 1) {

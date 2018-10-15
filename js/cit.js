@@ -4,7 +4,11 @@
 
 var block_texts = [];
 var first_categ;
-var all_main_rts = { "probs": [], "irrs": [] };
+var all_main_rts = {
+    "probs": [],
+    "irrs": []
+};
+
 function set_block_texts() {
     var change_hint;
     if (distance_order == 'wide1st') {
@@ -17,32 +21,32 @@ function set_block_texts() {
     } else {
         target_reminder = [
             "Zur Erinnerung: das mit JA zu beantwortende Detail ist <b>" +
-                stim_base[0][1].word.toUpperCase() +
-                "</b>. ",
+            stim_base[0][1].word.toUpperCase() +
+            "</b>. ",
             "Zur Erinnerung: das mit JA zu beantwortende Detail ist <b>" +
-                stim_base[1][1].word.toUpperCase() +
-                "</b>. "
+            stim_base[1][1].word.toUpperCase() +
+            "</b>. "
         ];
     }
     block_texts[0] = "";
     block_texts[1] =
-        'Es werden drei kurze Übungsrunden stattfinden. In der ersten Übungsrunde wollen wir nur herausfinden, ob Sie die Aufgabe genau verstanden haben. Um sicherzustellen, dass sie Ihre jeweiligen Antworten genau auswählen, werden Sie für diese Aufgabe genügend Zeit haben. An dieser Stelle werden alle Items der zwei Kategorien (Vornamen, Nachnamen) zufällig durchmischt. <b>Sie müssen auf jedes Item korrekt antworten.</b> Wählen Sie eine nicht korrekte Antwort (oder geben keine Antwort für mehr als 10 Sekunden), müssen Sie diese Übungsrunde wiederholen.<br><br>Falls nötig, tippen Sie <b>Anweisungen anzeigen</b> um die Details erneut zu lesen.<br><br>';
+        'Es werden drei kurze Übungsrunden stattfinden. In der ersten Übungsrunde wollen wir nur herausfinden, ob Sie die Aufgabe genau verstanden haben. Um sicherzustellen, dass sie Ihre jeweiligen Antworten genau auswählen, werden Sie für diese Aufgabe genügend Zeit haben. An dieser Stelle werden alle Items der zwei Kategorien (Vornamen, Nachnamen) zufällig durchmischt. <b>Sie müssen auf jedes Item korrekt antworten.</b> Wählen Sie eine nicht korrekte Antwort (oder geben keine Antwort für mehr als 10 Sekunden), müssen Sie diese Übungsrunde wiederholen.<br><br>Falls nötig, drücken Sie <b>Anweisungen erneut anzeigen</b> um die Details erneut zu lesen.<br><br>';
     block_texts[2] =
-        '<span id="feedback_id2">Super, Sie haben die erste Übungsrunde geschafft. In dieser zweiten Übungsrunde wird die Antwortzeit verkürzt sein, wobei aber eine bestimmte Anzahl an falschen Antworten erlaubt ist. (Vornamen und Nachnamen werden in Gruppen präsentiert.) Versuchen Sie, so genau und schnell wie möglich zu antworten. <br></span>';
+        '<span id="feedback_id2">Super, Sie haben die erste Übungsrunde geschafft. In dieser zweiten Übungsrunde wird die Antwortzeit verkürzt sein, wobei aber eine bestimmte Anzahl an falschen Antworten erlaubt ist.  <br> <br>Versuchen Sie, so genau und schnell wie möglich zu antworten. <br></span>';
     block_texts[3] =
-        '<span id="feedback_id3">Sie haben die zweite Übungsrunde geschafft. Nun folgt die dritte und letzte Übungsrunde. Die Antwortzeit wird erneut verkürzt. Die Wörter "Erkannt?", "Ja", "Nein" werden nicht mehr angezeigt, die Aufgabe bleibt jedoch dieselbe. <br><br> <b>Versuchen Sie, so genau und schnell wie möglich zu antworten.</b>.<br></span>';
+        '<span id="feedback_id3">Sie haben die zweite Übungsrunde geschafft. Nun folgt die dritte und letzte Übungsrunde. Die Antwortzeit wird erneut verkürzt. Die Wörter "Erkannt?", "Ja", "Nein" werden nicht mehr angezeigt, die Aufgabe bleibt jedoch dieselbe. <br><br> Versuchen Sie, so genau und schnell wie möglich zu antworten.<br></span>';
     block_texts[4] =
         "Gut gemacht. Nun beginnt der eigentliche Test. Die Aufgabe bleibt dieselbe. Es wird zwei Blöcke, getrennt durch eine Pause, geben. Im ersten Block wird die Kategorie " +
         stim_base[0][0].cat +
         " getestet, also werden Ihnen nur die damit verbundenen Items präsentiert. " +
         target_reminder[0] +
-        '<br><br><b>Versuchen Sie, so genau und schnell wie möglich zu antworten.</b>';
+        '<br><br>Versuchen Sie, so genau und schnell wie möglich zu antworten.';
     block_texts[5] =
         "Der erste Block ist nun beendet. Im zweiten Block wird die Kategorie " +
         stim_base[1][0].cat +
         " getestet. " +
         target_reminder[1] +
-        " Abgesehen davon bleibt die Aufgabe dieselbe. <b>Versuchen Sie, so genau und schnell wie möglich zu antworten.</b>";
+        " Abgesehen davon bleibt die Aufgabe dieselbe. <br><br>Versuchen Sie, so genau und schnell wie möglich zu antworten.";
 }
 
 function first_practice_stim() {
@@ -77,10 +81,12 @@ function getPracticeTestStimuli_simple() {
         prac_teststim.push.apply(prac_teststim, blocksOf108.slice(0, 6));
     });
 }
+
 function getAllTestStimuli_simple() {
     //same as above, but for the full test: 3x36=108 stimuli from each of the 3 categories
     teststim = randomDegradePlus(stim_base[blocknum - 4]);
 }
+
 function getPracticeTestStimuli_induced() {
     //27 degraded prac_teststim from all 3 categories (9+9+9)
     prac_teststim = [];
@@ -89,10 +95,12 @@ function getPracticeTestStimuli_induced() {
         prac_teststim.push.apply(prac_teststim, blocksOf162.slice(0, 9));
     });
 }
+
 function getAllTestStimuli_induced() {
     //same as above, but one block of the full test: 162 stimuli from each of the 3 categories
     teststim = inducersAdded(stim_base[blocknum - 4]);
 }
+
 function inducersAdded(groupOf6) {
     var stim_162_base = randomDegradePlus(groupOf6);
     var inducers = inducersGen();
@@ -108,6 +116,7 @@ function inducersAdded(groupOf6) {
     stim_162 = stim_162_base;
     return stim_162;
 }
+
 function inducersGen() {
     inducer_items = [
         "FAMILIAR",
@@ -134,6 +143,7 @@ function inducersGen() {
     });
     return inducers_base;
 }
+
 function randomDegradePlus(arrayOf6dicts) {
     // using blur-noblur attributes, assigns (to blurs) a number from 1-3 for each filler type (* or # or %) in a balanced manner
     var tempCopy6 = $.extend(true, [], arrayOf6dicts);
@@ -171,13 +181,12 @@ function randomDegradePlus(arrayOf6dicts) {
 // these below are declared globally so that next 36 stim generation will also not start with same as last
 var lastOf6filler = "none";
 var lastOf6word = "none";
+
 function randomDegrade(arrayOf6dicts) {
     // takes an array of six dictionary items, returns 36 items randomized in groups of 6, with randomly varying blur/filler attributes
     var stims_cat_base = shuffle(arrayOf6dicts);
     var stimuli_base36 = $.extend(
-        true,
-        [],
-        [
+        true, [], [
             stims_cat_base,
             stims_cat_base,
             stims_cat_base,
@@ -350,6 +359,7 @@ function flash_false() {
 
 // if there is a sole mistake in the first practice block, the block is repeated
 var first_correct = true;
+
 function first_prac_wrong() {
     if (blocknum == 1) {
         teststim = [];
@@ -369,9 +379,9 @@ function set_cit_conditions() {
         // standard CIT
         div_after_instr = "#div_target_check";
         $("#task_instruction").html(
-            'Drücken der <i>rechten</i> Taste bedeutet "JA, ich nehme dieses Item als relevant wahr.". Drücken der <i>linken</i> Taste bedeutet "Nein, ich nehme dieses Item nicht als relevant wahr." <br> Sie werden Wörter (Vornamen, Nachnamen) sehen, die in der Mitte des Bildschirms auftauchen. Sie sollten diese wahrnehmen und mit JA auf die folgenden Details antworten: <b>' +
-                the_targets.join("</b>, <b>").toUpperCase() +
-                "</b><br/><br/>Auf alle anderen Details sollten Sie mit NEIN antworten. Zur Erinnerung: Sie leugnen, irgendwelche der anderen Details als relevant für Sie wahrzunehmen, also sollten Sie auf alle mit NEIN antworten.<br/><br/>"
+            'Drücken der <i>rechten</i> Taste bedeutet "JA, ich nehme dieses Item als relevant wahr." Drücken der <i>linken</i> Taste bedeutet "Nein, ich nehme dieses Item nicht als relevant wahr". <br> Sie werden Wörter (Vornamen, Nachnamen) sehen, die in der Mitte des Bildschirms auftauchen. Sie sollten diese wahrnehmen und mit JA auf die folgenden Details antworten: <b>' +
+            the_targets.join("</b>, <b>").toUpperCase() +
+            "</b><br/><br/>Auf alle anderen Details sollten Sie mit NEIN antworten. Zur Erinnerung: Sie leugnen, irgendwelche der anderen Details als relevant für Sie wahrzunehmen, also sollten Sie auf alle mit NEIN antworten.<br/><br/>"
         );
         $("#label_top").html("Erkannt?");
         $("#label_right").html('Ja');
@@ -383,9 +393,9 @@ function set_cit_conditions() {
         div_after_instr = "#div_target_check";
         $("#task_instruction").html(
             'Pressing the "I" key means that the displayed item is "FAMILIAR" to you. Pressing the "E" key means that the item is "UNFAMILIAR" to you. You will see words (forenames, surnames) appearing in the middle of the screen. You have to say FAMILIAR to the following target details: <b>' +
-                the_targets.join("</b>, <b>").toUpperCase() +
-                "</b><br>You have to say UNFAMILIAR to all other actual details (other forenames, surnames). Remember: you are denying that you recognize any of these other details as relevant to you, so you have to say UNFAMILIAR to all of them. " +
-                inducers_instructions
+            the_targets.join("</b>, <b>").toUpperCase() +
+            "</b><br>You have to say UNFAMILIAR to all other actual details (other forenames, surnames). Remember: you are denying that you recognize any of these other details as relevant to you, so you have to say UNFAMILIAR to all of them. " +
+            inducers_instructions
         );
         $("#label_top").html("familiar to you?");
         $("#label_right").html('familiar = "I"');
@@ -397,7 +407,7 @@ function set_cit_conditions() {
         div_after_instr = "#div_cit_blockstart";
         $("#task_instruction").html(
             'Pressing the "I" key means that the displayed item is "FAMILIAR" to you. Pressing the "E" key means that the item is "UNFAMILIAR" to you. You will see words (forenames, surnames) appearing in the middle of the screen. You have to say UNFAMILIAR to all these details. Remember: you are denying that you recognize any of these details as relevant to you, so you have to say UNFAMILIAR to all of them. ' +
-                inducers_instructions
+            inducers_instructions
         );
         $("#label_top").html("familiar to you?");
         $("#label_right").html('familiar = "I"');
@@ -426,18 +436,20 @@ function item_display() {
 }
 // isi
 var isi_delay;
+
 function isi() {
     isi_delay = randomdigit(1, isi_delay_minmax[1] - isi_delay_minmax[0]);
     setTimeout(function() {
         item_display();
     }, isi_delay);
 }
+
 function post_resp_hold() {
     $("#stimulus").text("");
     setTimeout(function() {
-    listn_end = false;
-    add_response();
-  }, isi_delay_minmax[0]);
+        listn_end = false;
+        add_response();
+    }, isi_delay_minmax[0]);
 }
 
 it_type_feed_dict = {
@@ -464,19 +476,19 @@ function practice_eval() {
                 is_valid = false;
                 types_failed.push(
                     " " +
-                        it_type_feed_dict[it_type] +
-                        " (" +
-                        Math.floor(corr_ratio * 10000) / 100 +
-                        "% correct)"
+                    it_type_feed_dict[it_type] +
+                    " (" +
+                    Math.floor(corr_ratio * 10000) / 100 +
+                    "% correct)"
                 );
             }
         }
     }
     if (is_valid == false) {
         var feedback_text =
-            "You will have to repeat this practice round, because of too few correct responses.<br><br>You need at least 60% accuracy on each item type, but you did not have enough correct responses for the following one(s):" +
+            "Sie müssen diese Übungsrunde wiederholen, da sie zu wenige richtige Antworten gegeben haben. <br><br>Sie benötigen mindestens 60% richtige Antworten für jeden der beiden Antworttypen, jedoch gaben Sie nicht genügend richtige Antworten für folgende(n) Antworttyp(en): " +
             types_failed.join(",") +
-            ".<br><br>Try to make responses both accurately and in time.<br><br>";
+            ".<br><br>Bitte geben Sie genaue und im Zeitlimit liegende Antworten.<br><br>";
         $("#feedback_id" + blocknum).html(feedback_text);
     }
     return is_valid;
@@ -495,10 +507,10 @@ function main_eval() {
             verylow = true;
             types_failed.push(
                 " " +
-                    it_type_feed_dict[it_type] +
-                    " (" +
-                    Math.floor(corr_ratio * 10000) / 100 +
-                    "% correct)"
+                it_type_feed_dict[it_type] +
+                " (" +
+                Math.floor(corr_ratio * 10000) / 100 +
+                "% correct)"
             );
         }
     }
@@ -512,6 +524,7 @@ function main_eval() {
 }
 
 var text_to_show;
+
 function next_trial() {
     if (teststim.length > 0) {
         tooslow = 0;
@@ -614,9 +627,14 @@ function add_response() {
     next_trial();
 }
 var practice_num = 1;
+
 function call_practice_stim() {
+    practice_stim();
+    teststim = prac_teststim;
+    // do not halve stims in this experiment's practice
+
     //takes halves of the practice stims generated
-    if (practice_num % 2 == 1) {
+    /*if (practice_num % 2 == 1) {
         // generate and take first half
         practice_stim();
         teststim = prac_teststim.slice(0, Math.floor(prac_teststim.length / 2));
@@ -627,8 +645,10 @@ function call_practice_stim() {
             prac_teststim.length
         );
     }
+    */
     practice_num++;
 }
+
 function nextblock() {
     $("*").css("cursor", "auto");
     if (blocknum <= num_of_blocks) {
@@ -658,6 +678,7 @@ function nextblock() {
     }
 }
 var first_blockstart = true;
+
 function show_blockstart() {
     if (practice_repeated["block" + blocknum] == 0 || blocknum > 3) {
         $("#infotext").html(block_texts[blocknum]);
@@ -669,6 +690,7 @@ function show_blockstart() {
         $("#div_cit_blockstart").show();
     }
 }
+
 function runblock() {
     basic_times.blocks += "\nBlock " + blocknum + " start " + Date();
     $("*").css("cursor", "none");
@@ -677,10 +699,11 @@ function runblock() {
     $("#div_cit_main").show();
     can_start = true;
 }
+
 function start_trials() {
-  setTimeout(function() {
-    next_trial();
-  }, isi_delay_minmax[0]);
+    setTimeout(function() {
+        next_trial();
+    }, isi_delay_minmax[0]);
 }
 
 $(document).ready(function() {

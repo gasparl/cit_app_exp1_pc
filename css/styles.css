@@ -166,7 +166,7 @@ input[type=text]
 }
 #start_text {
   text-align: center;
-  font-size: 3vw;
+  font-size: 2.3vw;
   width: 70%;
   position: fixed;
   margin: 0;
@@ -177,7 +177,7 @@ input[type=text]
   color: #ff0000;
 }
 #stimulus {
-  font-size: 3vw;
+  font-size: 2.1vw;
   font-family: Arial !important;
   text-align: center;
   color: #FFFFFF;
@@ -192,11 +192,11 @@ input[type=text]
 }
 #label_top {
   text-align: center;
-  font-size: 2.5vw;
+  font-size: 1.5vw;
   width: 60%;
   position: fixed;
   margin: 0;
-  top: 20%;
+  top: 45%;
   left: 50%;
   margin-right: -50%;
   transform: translate(-50%, -50%);
@@ -204,10 +204,10 @@ input[type=text]
 #label_left {
   width: 30%;
   text-align: center;
-  font-size: 2.25vw;
+  font-size: 1.5vw;
   position: fixed;
   top: 75%;
-  left: 20%;
+  left: 35%;
   margin: 0;
   margin-right: -50%;
   transform: translate(-50%, -50%);
@@ -215,10 +215,10 @@ input[type=text]
 #label_right {
   width: 30%;
   text-align: center;
-  font-size: 2.25vw;
+  font-size: 1.5vw;
   position: fixed;
   top: 75%;
-  left: 80%;
+  left: 65%;
   margin: 0;
   margin-right: -50%;
   transform: translate(-50%, -50%);

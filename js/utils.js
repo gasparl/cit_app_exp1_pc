@@ -39,8 +39,6 @@ function change_div(
     if (good_to_go === true) {
         onchange_function1();
         onchange_function2();
-        console.log(current);
-        console.log(current.parentNode);
         var toHide = "#" + current.parentNode.id;
         $(toHide).hide();
         $(next).show();
@@ -94,7 +92,6 @@ function selectable_bg() {
         "-khtml-user-select": "text" /* Konqueror */ ,
         "user-select": "text" /* non-prefixed version */
     });
-    $("html").unbind("copy paste drop");
 }
 
 function no_select_bg() {
@@ -105,6 +102,7 @@ function no_select_bg() {
         "-khtml-user-select": "none" /* Konqueror */ ,
         "user-select": "none" /* non-prefixed version */
     });
+    darken_bg();
 }
 
 //calculate sum
@@ -241,21 +239,6 @@ function end_save() {
     element.remove();
 
     dl_as_file(f_name, cit_data);
-    $.post(
-        "php/store_finish.php", {
-            filename_post: f_name,
-            results_post: cit_data,
-            sid_post: subj_id,
-            exp_title_post: experiment_title,
-            cond_post: condition,
-            dems_post: dems
-        },
-        function(resp) {
-            if (resp.startsWith("Fail")) {
-                alert(resp);
-            }
-        }
-    );
 }
 
 function dl_as_file(filename_to_dl, data_to_dl) {
