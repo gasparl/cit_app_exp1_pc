@@ -381,7 +381,7 @@ function set_cit_conditions() {
         $("#task_instruction").html(
             'Drücken der <i>rechten</i> Taste bedeutet "JA, ich nehme dieses Item als relevant wahr." Drücken der <i>linken</i> Taste bedeutet "Nein, ich nehme dieses Item nicht als relevant wahr". <br> Sie werden Wörter (Vornamen, Nachnamen) sehen, die in der Mitte des Bildschirms auftauchen. Sie sollten diese wahrnehmen und mit JA auf die folgenden Details antworten: <b>' +
             the_targets.join("</b>, <b>").toUpperCase() +
-            "</b><br/><br/>Auf alle anderen Details sollten Sie mit NEIN antworten. Zur Erinnerung: Sie leugnen, irgendwelche der anderen Details als relevant für Sie wahrzunehmen, also sollten Sie auf alle mit NEIN antworten.<br/><br/>"
+            "</b><br/><br/>Auf alle anderen Details sollten Sie mit NEIN antworten. Zur Erinnerung: Sie leugnen, irgendwelche der anderen Details als relevant für Sie wahrzunehmen, also sollten Sie auf alle anderen mit NEIN antworten.<br/><br/>"
         );
         $("#label_top").html("Erkannt?");
         $("#label_right").html('Ja');
@@ -585,9 +585,9 @@ function add_response() {
         rt_data_dict[curr_type].push(rt_start);
     }
     var key_letter;
-    if (keys_code == 69) {
+    if (keys_code == 70) {
         key_letter = "e";
-    } else if (keys_code == 73) {
+    } else if (keys_code == 75) {
         key_letter = "i";
     } else {
         key_letter = keys_code;
@@ -728,18 +728,18 @@ $(document).ready(function() {
         if (listen === true) {
             rt_start = now() - start;
             keys_code = e.keyCode || e.which;
-            if (keys_code == 69 || keys_code == 73) {
+            if (keys_code == 70 || keys_code == 75) {
                 clearTimeout(response_window);
                 listen = false;
                 listn_end = true;
-                if (keys_code == 69) {
+                if (keys_code == 70) {
                     //nontarget
                     if (correct_key == "e") {
                         post_resp_hold();
                     } else if (correct_key == "i") {
                         flash_false();
                     }
-                } else if (keys_code == 73) {
+                } else if (keys_code == 75) {
                     //target
                     if (correct_key == "i") {
                         post_resp_hold();

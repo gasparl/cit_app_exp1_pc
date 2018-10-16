@@ -69,9 +69,20 @@ function check_selected() {
     return is_valid;
 }
 
+var pre_cond, device_order;
 function starter() {
     condition = 0; // always standard CIT guilty
-    cat_order = $("#name_order_id").val();
+    pre_cond = $("#name_order_id").val();
+    if (pre_cond % 2 == 0) {
+      device_order = 2;
+    } else {
+      device_order = 1;
+    }
+    if (pre_cond < 3) {
+      cat_order = 1;
+    } else {
+      cat_order = 2;
+    }
     subj_id = $("#subj_num_id").val();
 }
 
@@ -199,6 +210,10 @@ function end_save() {
         experiment_title +
         "_" +
         subj_id +
+        "_" +
+        pre_cond +
+        "_" +
+        device_order +
         "_" +
         cat_order +
         "_" +

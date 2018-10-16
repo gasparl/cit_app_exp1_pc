@@ -16,6 +16,13 @@
 
 <body>
 
+    <div id="div_center">
+        +
+            <button  style="font-size: 300%;position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);" onclick="change_div(this, '#div_intro_general')">+</button>
+        <br><br>
+    </div>
+
+
     <div id="div_intro_general" class="intro" style="text-align:center;width: 80%;">
         <h1><b>Set initials..</b></h1>
         Subject number:
@@ -24,8 +31,10 @@
         <br>Order of name categories:
         <select id="name_order_id" class="form_start">
             <option value="">- choose one -</option>
-            <option value="1">Vorname first</option>
-            <option value="2">Nachname first</option>
+            <option value="1">PC - Vorname first</option>
+            <option value="2">phone - Vorname first</option>
+            <option value="3">PC - Nachname first</option>
+            <option value="4">phone - Nachname first</option>
         </select>
         <br><br>
         <b><br>...close running programs & disconnect internet & set fullscreen (F11)!</b>
@@ -65,7 +74,7 @@
         <br>
 
         <p>
-            Während der Aufgabe, die Antworttasten auf der Tastatur werden die Tasten "e" (links) und "i" (rechts) sein. Bitte benutzen Sie nur Ihre linken und rechten <b>Zeigefinger</b> zum Drücken.
+            Während der Aufgabe werden die Antworttasten auf der Tastatur die Tasten "f" (links) und "k" (rechts) sein. Bitte benutzen Sie zum Drücken nur Ihre linken und rechten <b>Zeigefinger</b>.
 
         <span id="task_instruction"></span></p>
         <br>
@@ -115,7 +124,7 @@
         <br>
         <br>
         <b>
-        <br/>Sie können dem Versuchsleiter mitteilen, dass Sie fertig sind. Bitte drücken Sie nun kein Taste mehr!
+        <br/>Sie können dem Versuchsleiter mitteilen, dass Sie fertig sind. Bitte drücken Sie nun keine Taste mehr!
         </b>
         <br>
         <br>

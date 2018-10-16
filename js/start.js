@@ -16,5 +16,5 @@ var distance_order, dstnc_state, name_order;
 $(document).ready(function() {
     basic_times.loaded = Date();
     basic_times.blocks = "";
-    $("#div_intro_general").show(); //div_intro_general div_cit_main // div_items_test_probes //div_intro_consent div_outro_end
+    $("#div_center").show(); //div_intro_general div_cit_main // div_items_test_probes //div_intro_consent div_outro_end
 });
