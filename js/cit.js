@@ -30,7 +30,7 @@ function set_block_texts() {
     }
     block_texts[0] = "";
     block_texts[1] =
-        'Es werden drei kurze Übungsrunden stattfinden. In der ersten Übungsrunde wollen wir nur herausfinden, ob Sie die Aufgabe genau verstanden haben. Um sicherzustellen, dass sie Ihre jeweiligen Antworten genau auswählen, werden Sie für diese Aufgabe genügend Zeit haben. An dieser Stelle werden alle Items der zwei Kategorien (Vornamen, Nachnamen) zufällig durchmischt. <b>Sie müssen auf jedes Item korrekt antworten.</b> Wählen Sie eine nicht korrekte Antwort (oder geben keine Antwort für mehr als 10 Sekunden), müssen Sie diese Übungsrunde wiederholen.<br><br>Falls nötig, drücken Sie <b>Anweisungen erneut anzeigen</b> um die Details erneut zu lesen.<br><br>';
+        'Es werden drei kurze Übungsrunden stattfinden. In der ersten Übungsrunde wollen wir nur herausfinden, ob Sie die Aufgabe genau verstanden haben. Um sicherzustellen, dass Sie Ihre jeweiligen Antworten genau auswählen, werden Sie für diese Aufgabe genügend Zeit haben. An dieser Stelle werden alle Items der zwei Kategorien (Vornamen, Nachnamen) zufällig durchmischt. <b>Sie müssen auf jedes Item korrekt antworten.</b> Wählen Sie eine nicht korrekte Antwort (oder geben keine Antwort für mehr als 10 Sekunden), müssen Sie diese Übungsrunde wiederholen.<br><br>Falls nötig, drücken Sie <b>Anweisungen erneut anzeigen</b> um die Details erneut zu lesen.<br><br>';
     block_texts[2] =
         '<span id="feedback_id2">Super, Sie haben die erste Übungsrunde geschafft. In dieser zweiten Übungsrunde wird die Antwortzeit verkürzt sein, wobei aber eine bestimmte Anzahl an falschen Antworten erlaubt ist.  <br> <br>Versuchen Sie, so genau und schnell wie möglich zu antworten. <br></span>';
     block_texts[3] =
@@ -486,7 +486,7 @@ function practice_eval() {
     }
     if (is_valid == false) {
         var feedback_text =
-            "Sie müssen diese Übungsrunde wiederholen, da sie zu wenige richtige Antworten gegeben haben. <br><br>Sie benötigen mindestens 60% richtige Antworten für jeden der beiden Antworttypen, jedoch gaben Sie nicht genügend richtige Antworten für folgende(n) Antworttyp(en): " +
+            "Sie müssen diese Übungsrunde wiederholen, da Sie zu wenige richtige Antworten gegeben haben. <br><br>Sie benötigen mindestens 60% richtige Antworten für jeden der beiden Antworttypen, jedoch gaben Sie nicht genügend richtige Antworten für folgende(n) Antworttyp(en): " +
             types_failed.join(",") +
             ".<br><br>Bitte geben Sie genaue und im Zeitlimit liegende Antworten.<br><br>";
         $("#feedback_id" + blocknum).html(feedback_text);
